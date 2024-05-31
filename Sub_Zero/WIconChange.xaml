@@ -1,0 +1,129 @@
+﻿<Window x:Class="Sub_Zero.WIconChange"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:Sub_Zero"
+        mc:Ignorable="d"
+        Title="WIconChange" Height="720" Width="400" WindowStartupLocation="CenterScreen" WindowStyle="None"
+ AllowsTransparency="True" Background="Transparent" >
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    <Border Background="#eff2ef" CornerRadius="30" MouseDown="Border_MouseDown" BorderBrush="#FF623ED0" BorderThickness="3"  >
+        <Grid MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="228*"/>
+                <RowDefinition Height="369*"/>
+                <RowDefinition Height="97*"/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.RowSpan="1">
+                <Border Width="200" Height="200" Padding="4" Background="#FF623ED0" CornerRadius="100"
+                         DockPanel.Dock="Top"   HorizontalAlignment="Center" Margin="0 10 0 0" Grid.RowSpan="1" VerticalAlignment="Center">
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/ImageUsers/Patrick.jpg"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Border>
+                <Button Style="{StaticResource topButton}" Margin="0 -200 10 0"  VerticalAlignment="Top" HorizontalAlignment="Right" DockPanel.Dock="Top" Click="CloseWind">
+                    <Icon:PackIconMaterial Kind="ExitToApp"/>
+                </Button>
+            </DockPanel>
+            <Separator Margin="30,227,30,0" DockPanel.Dock="Top" Height="1" Background="#7e5dfc"/>
+            <DockPanel Grid.RowSpan="2">
+                <StackPanel Orientation="Vertical" Grid.RowSpan="2" Width="394" Height="256" DockPanel.Dock="Top" Margin="0,0,0,-150" >
+                    <StackPanel Orientation="Horizontal" Grid.RowSpan="2" >
+                        <Border Width="80" Height="80" Padding="2" Background="#FF623ED0" CornerRadius="100"
+          DockPanel.Dock="Top"   HorizontalAlignment="Center" Margin="10 0 5 0" Grid.RowSpan="1">
+                            <Ellipse x:Name="Image1">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/ImageUsers/Patrick.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <Border Width="80" Height="80" Padding="2" Background="#FF623ED0" CornerRadius="100"
+DockPanel.Dock="Top"   HorizontalAlignment="Center" Margin="10 0 10 0" Grid.RowSpan="1">
+                            <Ellipse x:Name="Image2">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/ImageUsers/Patrick.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <Border Width="80" Height="80" Padding="2" Background="#FF623ED0" CornerRadius="100"
+DockPanel.Dock="Top"   HorizontalAlignment="Center" Margin="10 0 10 0" Grid.RowSpan="1">
+                            <Ellipse x:Name="Image3">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/ImageUsers/Patrick.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <Border Width="80" Height="80" Padding="2" Background="#FF623ED0" CornerRadius="100"
+DockPanel.Dock="Top"   HorizontalAlignment="Center" Margin="10 0 10 0" Grid.RowSpan="1">
+                            <Ellipse x:Name="Image4">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/ImageUsers/Patrick.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.RowSpan="2" >
+                        <Border Width="80" Height="80" Padding="2" Background="#FF623ED0" CornerRadius="100"
+          DockPanel.Dock="Top"   HorizontalAlignment="Center" Margin="10 5 5 0" Grid.RowSpan="1">
+                            <Ellipse x:Name="Image5">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/ImageUsers/Patrick.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <Border Width="80" Height="80" Padding="2" Background="#FF623ED0" CornerRadius="100"
+DockPanel.Dock="Top"   HorizontalAlignment="Center" Margin="10 5 10 0" Grid.RowSpan="1">
+                            <Ellipse x:Name="Image6">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/ImageUsers/Patrick.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <Border Width="80" Height="80" Padding="2" Background="#FF623ED0" CornerRadius="100"
+DockPanel.Dock="Top"   HorizontalAlignment="Center" Margin="10 5 10 0" Grid.RowSpan="1">
+                            <Ellipse x:Name="Image7">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/ImageUsers/Patrick.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <Border Width="80" Height="80" Padding="2" Background="#FF623ED0" CornerRadius="100"
+DockPanel.Dock="Top"   HorizontalAlignment="Center" Margin="10 5 5 0" Grid.RowSpan="1">
+                            <Ellipse x:Name="Image8">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/ImageUsers/Patrick.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                    </StackPanel>
+                    <Button Style="{StaticResource FileButton}" Margin="0 29 0 0"  VerticalAlignment="Center" HorizontalAlignment="Center" DockPanel.Dock="Top" Click="OpenFile">
+                        <Icon:PackIconMaterial Kind="SettingsHelper" Foreground="White" Width="30" Height="30"/>
+                    </Button>
+
+                </StackPanel>
+            </DockPanel>
+            <DockPanel Margin="0,291,0,50" Grid.Row="1" Grid.RowSpan="2">
+                <Button Style="{StaticResource AddButton}" DockPanel.Dock="Bottom" Width="100" HorizontalAlignment="Center" Click="CloseWind">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Отмена"/>
+                    </StackPanel>
+                </Button>
+
+
+            </DockPanel>
+            <TextBlock Text="Поменяйте свой образ! Новая аватарка ждет вас." Margin="0,61,0,0" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="#FF4B2BAC" FontSize="14"/>
+            <Button Style="{StaticResource AddButton}" HorizontalAlignment="Stretch" Margin="97,300,97,44" Grid.Row="1">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Сохранить"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </Border>
+
+</Window>
