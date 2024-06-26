@@ -1,0 +1,102 @@
+﻿<Window x:Class="Sub_Zero.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sub_Zero"
+          xmlns:userContols="clr-namespace:Sub_Zero.View.UserControls"
+       
+        mc:Ignorable="d"
+        Title="Sub-Zero" Height="550" Width="333" Foreground="#FFE64747"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+         Background="Transparent">
+
+
+    <Grid x:Name="WindowToEnter" Background="Transparent" MouseDown="WindowToEnter_MouseDown">
+
+        <Border x:Name="bEnter" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="333" Height="550"   >
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform Angle="0" CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FFEBEAFD" Offset="1"/>
+                    <GradientStop Color="#FF9D92F3" Offset="0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.OpacityMask>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <Border CornerRadius="1" Width="20" Height="30" Background="White"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Border.OpacityMask>
+
+            <Grid >
+                <StackPanel Orientation="Vertical">
+
+                    <Separator Height="45" Background="Transparent"/>
+                    <Label Content="Sub-Zero" HorizontalAlignment="Center" FontFamily="Arial" FontSize="48" Foreground="#FF4B2BAC" />
+                    <Separator Width="333" Height="30" Background="Transparent"/>
+                    <Label x:Name="lPositionOfEnOrSig" Content="Вход" HorizontalAlignment="Center" FontFamily="Arial" FontSize="18" Foreground="#FF4B2BAC"/>
+                    <Separator Width="333" Height="20" Background="Transparent"/>
+                    <userContols:ClearableTextBox Placeholder="Логин" x:Name="txtLogin" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  Width="250" Height="35"/>
+                    <Separator Width="333" Height="20" Background="Transparent"/>
+                   
+                    <Grid Background="#FFF5F4FE" Width="250" Height="40">
+
+                        <PasswordBox x:Name="pwdInput" VerticalContentAlignment="Center"
+         FontSize="16" FontWeight="Light" Background="Transparent"
+         PasswordChanged="pwdInput_PasswordChanged_1"
+         BorderThickness="0" Margin="10,0,30,0" Foreground="#FF4B2BAC"/>
+
+                        <TextBlock x:Name="tbPlaceHolder"  Text="{Binding Placeholder }"  FontSize="16" FontWeight="Light"
+           Foreground="#FF623ED0" VerticalAlignment="Center" Margin="10,0,10,0"
+            Panel.ZIndex="-1"/>
+
+                        <Button x:Name="btnClear" Width="30" HorizontalAlignment="Right" Content="X"
+         Background="Transparent" Foreground="LightGray" BorderThickness="0"
+         Click="btnClear_Click"/>
+                        <Border BorderThickness="1" BorderBrush="#FF623ED0"  Panel.ZIndex="-2"/>
+                    </Grid>
+                    <Separator Width="333" Height="20" Background="Transparent"/>
+                    <ComboBox x:Name="cbSelectorWorks"  Width="250" Height="35"  Foreground="#FF4B2BAC" VerticalAlignment="Center" Margin="12,0,12,0" 
+                              FontSize="16" FontWeight="Light" HorizontalAlignment="Center" Visibility="Hidden" Style="{StaticResource ComboBoxStyle}">
+                        <ComboBoxItem Content="Сотруд.Транспрт.Отдел"/>
+                        <ComboBoxItem Content="Логист"/>
+                    </ComboBox>
+                    <Separator Width="333" Height="20" Background="Transparent"/>
+                    <Button x:Name="btMainWind" Width="250" Height="35"  Style="{StaticResource RoundedButton}" 
+                            Click="OpenMainWind" Content="Войти" Foreground="White" Background="#7c66ec" FontFamily="Arial" FontSize="18"/>
+
+                    <Separator Width="333" Height="86" Background="Transparent"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Separator Width="78" Height="20" Background="Transparent"/>
+                        <Button x:Name="btEnter" Width="201" Content="Нет аккаунта? Зарегистрируйтесь" Foreground="#FF4B2BAC" Background="Transparent" BorderBrush="#004A4343"
+                                Style="{StaticResource HidenButton}" Click="btEnter_Click" Margin="-7,0,0,0"/>
+
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+        </Border>
+
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Separator Width="286" Background="Transparent"/>
+                <Button x:Name="btClose" Width="27"  Content="X" Background="Transparent" Foreground="White"
+    Click="btClose_Click" BorderThickness="0" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>

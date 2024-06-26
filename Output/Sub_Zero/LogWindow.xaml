@@ -1,0 +1,221 @@
+﻿<Window x:Class="Sub_Zero.LogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sub_Zero"
+        mc:Ignorable="d"
+        Title="LogWindow" Height="720" Width="1288" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent"
+        >
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    <Border Background="#eff2ef" CornerRadius="30" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--Левое меню-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--Меню Иконок?-->
+                <Button Margin="20 28 0 35" Style="{StaticResource topButton}">
+                    <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
+                </Button>
+                <Border Grid.Row="1" Background="#623ed0" CornerRadius="0 50 0 30">
+                    <DockPanel>
+                       <!--Меню инструментов-->
+                        <!--Картинка-->
+                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100"
+                                DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
+                            <Ellipse MouseLeftButtonDown="ChangeIcon" >
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/ImageUsers/Patrick.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            
+                        </Border>
+                        <TextBlock Text="Главное это вы." Foreground="White" FontSize="19" FontWeight="SemiBold"
+                                   DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
+                        
+                        <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="#7e5dfc"/>
+                        
+                        <!--Кнопки меню иструметов-->
+                        <StackPanel DockPanel.Dock="Top">
+                            <Button Style="{StaticResource menuButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="HomeVariant" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Панель Инструментов"/>
+                                </StackPanel>
+                            </Button>
+                           
+                            
+                            <Button x:Name="btZacazOrCar" Style="{StaticResource menuButton}" Click="Button_Click_Customer">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="PacMan" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock x:Name="txtBlock2" Text="Заказчики"/>
+                                </StackPanel>
+                            </Button>
+
+
+                            <Button Style="{StaticResource menuButton}" Click="Button_Click_Document" x:Name="docum">
+                                <StackPanel Orientation="Horizontal"  >
+                                    <Icon:PackIconMaterial Kind="FileDocumentMultiple" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Распичатаь документ"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="btMarks" Style="{StaticResource menuButton}" Click="btMarks_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="AccessPoint"  Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Отметки"/>
+                                </StackPanel>
+                            </Button>
+
+                        </StackPanel>
+                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20" Click="Button_Click">
+                            <StackPanel Orientation="Horizontal" >
+                                <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
+                                <TextBlock Text="Выход"/>
+                            </StackPanel>
+                        </Button>
+                    </DockPanel>
+                    
+                </Border>
+            </Grid>
+           <!--Таблица БД или Основаня часть-->
+            <Grid Grid.Column="1" Margin="30 20 20 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <!--Поиск по названию-->
+                <Grid Width="300" HorizontalAlignment="Left">
+                    <TextBlock Margin="20,0,30,0" VerticalAlignment="Center" Foreground="#6240c2" IsHitTestVisible="False"
+                               Panel.ZIndex="1" Text="Поиск ... " Visibility="{Binding ElementName=FindOnTable,Path=Text. IsEmpty,Converter={StaticResource BoolToVis}}"/>
+                    <TextBox x:Name="FindOnTable" Style="{StaticResource textBoxSearch}" TextChanged="FindOnTable_TextChanged"/>
+                    <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center"
+                                           Margin="0 0 15 0" Foreground="#b0b9c6" HorizontalAlignment="Right"/>
+                </Grid>
+                <!--Кнопочки справа(хз зачем они но может пригодится)-->
+                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" HorizontalAlignment="Right">
+                    <Icon:PackIconMaterial Kind="Cog"/>
+                </Button>
+                
+                <Button Style="{StaticResource topButton}" Margin="0 0 55 0" HorizontalAlignment="Right" Click="Button_Click_1">
+                    <Icon:PackIconMaterial Kind="Bell"/>
+                </Button>
+                <!--Название страницы-->
+                <TextBlock x:Name="txtBlockNameTable" Text="Таблица посылок" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
+                           HorizontalAlignment="Left" Foreground="#121518"/>
+                <!--Какие-то кнопки(-_-)-->
+                <Button x:Name="btAddBoxOrCar" Style="{StaticResource AddButton}" HorizontalAlignment="Left" Margin="638,24,0,4" Grid.Row="1" Click="Button_Click_AddBox">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                        <TextBlock x:Name="txtBlock" Text="Добавить новую посылку"/>
+                    </StackPanel>
+                </Button>
+                <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10" />
+                <!--Опять какие то кнопки(Ебучие пирожки)-->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
+                    <Button x:Name="btName" Content="Название" Style="{StaticResource tabButton}" Width="79"/>
+                    <Button x:Name="btWeight" Content="Вес" Style="{StaticResource tabButton}" Width="58"/>
+                    <Button x:Name="btDimension" Content="Размер" Style="{StaticResource tabButton}"/>
+                    <Button x:Name="btCar" Content="Автомобиль" Style="{StaticResource tabButton}" Width="99"/>
+                    <Button x:Name="btCityOt" Content="Город доставки" Style="{StaticResource tabButton}" Width="111"/>
+                    <Button x:Name="btCityDo" Content="Город получения" Style="{StaticResource tabButton}" Width="122"/>
+                   
+                </StackPanel>
+                <!--Вырезано-->
+                <!--Таблица-->
+
+                <DataGrid x:Name="DgBox" Visibility="Visible" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Id}"/>
+                        <DataGridTemplateColumn Header="Название посылки" IsReadOnly="True" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding NameBox}" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Клиент" IsReadOnly="True" CanUserResize="True" Width="*" Binding="{Binding idCustomer}"/>
+                        <DataGridTextColumn Header="Вес" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding Weight}"/>
+                        <DataGridTextColumn Header="Размер" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding Value}"/>
+                        <DataGridTextColumn Header="Город доставки" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding NameSityDostav}"/>
+                        <DataGridTextColumn Header="Город получения" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding NameSityOtprav}"/>
+                        <DataGridTextColumn Header="Автомбиль" IsReadOnly="True" CanUserResize="true" Width="*" Binding="{Binding idCar}"/>
+                        <DataGridTextColumn Header="Дата прибытия" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding datePolych}"/>
+                        <DataGridTextColumn Header="Стоимость" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding PriceBox}"/>
+
+                        <DataGridTemplateColumn Header="Действия" IsReadOnly="True" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Style="{StaticResource gridEditButton}" Click="Button_Change_box">
+                                            <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                        </Button>
+                                        <Button Style="{StaticResource gridRemoveButton}" Margin="5 0 0 0" Click="Button_Delete_box">
+                                            <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DataGrid x:Name="DgCar" Visibility="Hidden" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Id}"/>
+                        <DataGridTemplateColumn Header="Марка автомобиля" IsReadOnly="True" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding MarkOfCar}" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Номер" IsReadOnly="True" CanUserResize="True" Width="*" Binding="{Binding NumberCar}"/>
+                        <DataGridTextColumn Header="Водитель" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding name}"/>
+                        <DataGridTextColumn Header="Макс вес" IsReadOnly="True" CanUserResize="True" Width="*" Binding="{Binding MaxDostupWeight}"/>
+                        <DataGridTextColumn Header="Макс объём" IsReadOnly="True" CanUserResize="True" Width="*" Binding="{Binding MaxDostupVelue}"/>
+                       
+
+                        <DataGridTemplateColumn Header="Действия" IsReadOnly="True" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Style="{StaticResource gridEditButton}" Click="Button_Click_Updata">
+                                            <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                        </Button>
+                                        <Button Style="{StaticResource gridRemoveButton}" Margin="5 0 0 0" Click="Button_Click_delet" >
+                                            <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+        </Grid>
+
+    </Border>
+</Window>
